@@ -27,12 +27,13 @@ $helper = $this->helper(\Magento\Search\Helper\Data::class);
                     <?php
                     $categories = $this->getStoreCategories(false,false,true);
                     ?>
-                        <select <?php foreach($categories as $category) {?>
-                        <option value="<?= $category->getId(); ?>"><?php echo $category->getName(); ?></option>
-                        <?php
+                        <select <?php foreach($categories as $category) {?> >
+                        <option value=""><?php echo $category->getName(); ?></option>
+                            <?php
                         }
                         ?>
                         </select>
+
                     </div>
                     <div class="control">
                         <input id="search" data-mage-init='{"quickSearch":{
