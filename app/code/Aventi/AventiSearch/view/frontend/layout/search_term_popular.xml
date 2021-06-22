@@ -15,5 +15,6 @@
            <referenceContainer name="content">
             <block class="Magento\Search\Block\Term" name="my.seo.searchterm" template="Aventi_AventiSearch::term.phtml"/>
         </referenceContainer>
+
     </body>
 </page>

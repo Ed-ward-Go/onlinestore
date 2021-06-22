@@ -1,0 +1,4 @@
+#search_mini_form > div.field.search > div{
+    display: flex;
+    align-items: flex-end;
+}

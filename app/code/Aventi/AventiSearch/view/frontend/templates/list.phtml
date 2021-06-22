@@ -1,0 +1,10 @@
+<?php
+
+/**
+ * @var $block \Aventi\AventiSearch\Block\Categories
+ */
+
+$categorys = $this->getStoreCategories(false,false,true);
+foreach($categorys as $category){
+    echo $category->getName();
+  }

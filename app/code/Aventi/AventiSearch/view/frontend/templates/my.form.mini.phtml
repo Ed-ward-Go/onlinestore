@@ -8,10 +8,12 @@
 // phpcs:disable Magento2.Templates.ThisInTemplate.FoundThis
 ?>
 <?php
-/** @var $block \Magento\Framework\View\Element\Template */
+
+/** @var $block \Aventi\AventiSearch\Block\Categories*/
 /** @var $helper \Magento\Search\Helper\Data */
 $helper = $this->helper(\Magento\Search\Helper\Data::class);
 ?>
+
 <div class="block block-search">
     <div class="block block-title"><strong><?= $block->escapeHtml(__('Search')) ?></strong></div>
     <div class="block block-content">
@@ -22,15 +24,14 @@ $helper = $this->helper(\Magento\Search\Helper\Data::class);
                 </label>
                 <div class="form-group">
                     <div>
-                        <select name="categorias" id="categorias">
-                            <option value="">Toda la tienda</option>
-                            <option value="volvo">Accesories</option>
-                            <option value="saab">Women</option>
-                            <option value="mercedes">Men</option>
-                            <option value="audi">Gear</option>
-                            <option value="audi">Training</option>
-                            <option value="audi">Sale</option>
-                            <option value="audi">Mercado</option>
+                    <?php
+                    $categories = $this->getStoreCategories(false,false,true);
+                    ?>
+                        <select <?php foreach($categories as $category) {?>
+                        <option value="<?= $category->getId(); ?>"><?php echo $category->getName(); ?></option>
+                        <?php
+                        }
+                        ?>
                         </select>
                     </div>
                     <div class="control">

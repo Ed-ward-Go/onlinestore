@@ -9,7 +9,7 @@
     <body>
         <referenceContainer name="header-wrapper">
             <referenceblock name="top.search" remove="false"/>
-            <block class="Magento\Framework\View\Element\Template" name="top.search" as="topSearch" template="Aventi_AventiSearch::my.form.mini.phtml" />
+            <block class="Aventi\AventiSearch\Block\Categories" name="top.search" as="topSearch" template="Aventi_AventiSearch::my.form.mini.phtml" />
         </referenceContainer>
 
         <referenceBlock name="footer_links">
