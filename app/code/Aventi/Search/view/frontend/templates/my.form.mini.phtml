@@ -8,12 +8,11 @@
 // phpcs:disable Magento2.Templates.ThisInTemplate.FoundThis
 ?>
 <?php
-
-/** @var $block \Aventi\AventiSearch\Block\Categories*/
+/** @var $block \Aventi\Search\Block\Categories */
 /** @var $helper \Magento\Search\Helper\Data */
 $helper = $this->helper(\Magento\Search\Helper\Data::class);
-?>
 
+?>
 <div class="block block-search">
     <div class="block block-title"><strong><?= $block->escapeHtml(__('Search')) ?></strong></div>
     <div class="block block-content">
@@ -22,17 +21,29 @@ $helper = $this->helper(\Magento\Search\Helper\Data::class);
                 <label class="label" for="search" data-role="minisearch-label">
                     <span><?= $block->escapeHtml(__('Search')) ?></span>
                 </label>
+
                 <div class="form-group">
+
                     <div>
-                    <?php
-                    $categories = $this->getStoreCategories(false,false,true);
-                    ?>
-                        <select <?php foreach($categories as $category) {?> >
-                        <option value=""><?php echo $category->getName(); ?></option>
-                            <?php
-                        }
-                        ?>
+                        <span id="lista"></span>
+                        <?php $categories = $block->getStoreCategories(false,false,true); ?>
+
+                    <select id="select" name="cat" onchange="show();">
+
+                        <option value="<?php foreach($categories as $category) {?>">Select Category</option>
+
+                            <option value="<?= $category->getId(); ?>"><?= $category->getName(); ?></option>
+
+                                <?php } ?>
+
                         </select>
+
+                        <script>
+                            function show(){
+                                let cat = document.getElementById("select").value;
+                                document.getElementById("lista").innerText = `${cat}`;
+                            }
+                        </script>
 
                     </div>
                     <div class="control">
@@ -41,7 +52,16 @@ $helper = $this->helper(\Magento\Search\Helper\Data::class);
                                 "url":"<?= $block->escapeUrl($helper->getSuggestUrl()) ?>",
                                 "destinationSelector":"#search_autocomplete",
                                 "minSearchLength":"<?= $block->escapeHtml($helper->getMinQueryLength()) ?>"}
-                           }' type="text" name="<?= $block->escapeHtmlAttr($helper->getQueryParamName()) ?>" value="<?= /* @noEscape */ $helper->getEscapedQueryText() ?>" placeholder="<?= $block->escapeHtmlAttr('Busca en toda la tienda aqui...') ?>" class="input-text" maxlength="<?= $block->escapeHtmlAttr($helper->getMaxQueryLength()) ?>" role="combobox" aria-haspopup="false" aria-autocomplete="both" autocomplete="off" aria-expanded="false" />
+                                }' type="text" name="<?= $block->escapeHtmlAttr($helper->getQueryParamName()) ?>"
+                               value="<?= /* @noEscape */ $helper->getEscapedQueryText() ?>"
+                               placeholder="<?= $block->escapeHtmlAttr('Search here custom.') ?>"
+                               class="input-text" maxlength="<?= $block->escapeHtmlAttr($helper->getMaxQueryLength()) ?>"
+                               role="combobox"
+                               aria-haspopup="false"
+                               aria-autocomplete="both"
+                               autocomplete="off"
+                               aria-expanded="false" />
+
                         <div id="search_autocomplete" class="search-autocomplete"></div>
                         <?= $block->getChildHtml() ?>
                     </div>

@@ -7,9 +7,9 @@
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-        <referenceContainer name="header-wrapper">
             <referenceblock name="top.search" remove="false"/>
-            <block class="Aventi\AventiSearch\Block\Categories" name="top.search" as="topSearch" template="Aventi_AventiSearch::my.form.mini.phtml" />
+        <referenceContainer name="header-wrapper">
+            <block class="Aventi\Search\Block\Categories" name="top.search"  template="Aventi_Search::my.form.mini.phtml" />
         </referenceContainer>
 
         <referenceBlock name="footer_links">
@@ -22,4 +22,3 @@
         </referenceBlock>
     </body>
 </page>
-

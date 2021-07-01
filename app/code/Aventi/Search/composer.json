@@ -1,5 +1,5 @@
 {
-    "name": "aventi/module-aventisearch",
+    "name": "aventi/module-search",
     "description": "Buscador optimizado.",
     "type": "magento2-module",
     "license": "GPL-3.0",
@@ -20,7 +20,7 @@
             "registration.php"
         ],
         "psr-4": {
-            "Aventi\\AventiSearch\\": ""
+            "Aventi\\Search\\": ""
         }
     }
 }

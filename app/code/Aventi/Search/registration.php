@@ -5,5 +5,5 @@
  */
 use Magento\Framework\Component\ComponentRegistrar;
 
-ComponentRegistrar::register(ComponentRegistrar::MODULE, 'Aventi_AventiSearch', __DIR__);
+ComponentRegistrar::register(ComponentRegistrar::MODULE, 'Aventi_Search', __DIR__);
 
